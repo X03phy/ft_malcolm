@@ -23,14 +23,14 @@
 /*
  * Structures
 */
-/* Ethernet frame header */
+/* Ethernet frame header (14 bytes) */
 typedef struct __attribute__((packed)) {
 	uint8_t  dst[ETH_ALEN];  /* Destination MAC address */
 	uint8_t  src[ETH_ALEN];  /* Source MAC address */
 	uint16_t ethertype;      /* Ethernet type (ETH_P_ARP) */
 } ether_hdr;
 
-/* Ethernet ARP packet from RFC 826 */
+/* ARP packet (Ethernet / IPv4) as defined in RFC 826 */
 typedef struct __attribute__((packed)) {
 	uint16_t htype;          /* Hardware type (ARP_HTYPE_ETHER) */
 	uint16_t ptype;          /* Protocol type (ETH_P_IP) */
