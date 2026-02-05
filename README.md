@@ -55,7 +55,7 @@ https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/ipaddr_arp/configuration/xe-3s
 
 #### Sockets 
 
-- [A Beginners Guide to Socket Programming in C](https://dev.to/sanjayrv/a-beginners-guide-to-socket-programming-in-c-5an5)
+
 
 ### Makefile
 

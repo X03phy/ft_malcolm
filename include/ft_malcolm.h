@@ -21,7 +21,7 @@ typedef struct __attribute__((packed)) {
 } ether_hdr;
 
 /* Ethernet ARP packet from RFC 826 */
-typedef struct {
+typedef struct __attribute__((packed)) {
 	uint16_t ar_hrd;            /* Format of hardware address */
 	uint16_t ar_pro;            /* Format of protocol address */
 	uint8_t  ar_hln;            /* Length of hardware address */

@@ -1,8 +1,8 @@
 #include "ft_malcolm.h"
 #include <signal.h> // signal(), SIGINT
 #include <sys/socket.h> // socket(), AF_INET, SOCK_RAW
-
-#include <stdio.h> // printf()
+#include <arpa/inet.h> // htons()
+#include <stdio.h> // fprintf(), stderr
 #include <unistd.h> // sleep()
 
 
@@ -18,20 +18,26 @@ int ft_malcolm()
 static void signal_handler()
 {
 	g_sig = 0;
-	printf("yess\n");
 }
 
 
 int main(int argc, char **argv)
 {
 	int sockfd;
+	struct 
 
 	// if (!parse_input(argc, argv))
 	// 	return (1);
 
-	signal(SIGINT, signal_handler);
-	while (g_sig) {
-		sockfd = socket(AF_INET, SOCK_RAW, 0);
+	// signal(SIGINT, signal_handler);
+
+	sockfd = socket(AF_INET, SOCK_RAW, htons(ETH_P_ARP));
+	if (sockfd < 0) {
+		fprintf(stderr, "Fuck this\n");
+		return (1);
+	}
+	while (1) {
+
 	}
 
 	return (0);
