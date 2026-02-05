@@ -4,48 +4,38 @@
 /*
  * Includes
 */
+
 #include <stdint.h> // uint8_t, uint16_t, uint32_t
-
-
-/*
- * Macros
-*/
-#define ETH_P_ARP 0x0806 /* Address Resolution packet */
-
-
-#define ARP_HTYPE_ETHER 1  /* Ethernet ARP type */
-#define ARP_PTYPE_IPv4 0x0800 /* Internet Protocol packet */
-#define ARP_REQUEST 1 // a revoir
-#define ARP_REPLY 0 // a revoir
-#define ETH_ALEN 6
+#include <linux/if_ether.h> // ETH_ALEN
 
 
 /*
  * Structures
 */
-/* Ethernet frame header (14 bytes) */
+
+/* Ethernet frame header */
 typedef struct __attribute__((packed)) {
-	uint8_t  dst[ETH_ALEN];  /* Destination MAC address */
-	uint8_t  src[ETH_ALEN];  /* Source MAC address */
-	uint16_t ethertype;      /* Ethernet type (ETH_P_ARP) */
+	uint8_t  dest_addr[ETH_ALEN];  /* Destination hardware address */
+	uint8_t  src_addr[ETH_ALEN];   /* Source hardware address */
+	uint16_t frame_type;           /* Ethernet frame type */
 } ether_hdr;
 
-/* ARP packet (Ethernet / IPv4) as defined in RFC 826 */
-typedef struct __attribute__((packed)) {
-	uint16_t htype;          /* Hardware type (ARP_HTYPE_ETHER) */
-	uint16_t ptype;          /* Protocol type (ETH_P_IP) */
-	uint8_t  hlen;           /* Hardware address length (6) */
-	uint8_t  plen;           /* Protocol address length (4) */
-	uint16_t opcode;         /* ARP opcode (REQUEST / REPLY) */
-	uint8_t  sha[ETH_ALEN];  /* Sender hardware address (MAC) */
-	uint32_t spa;            /* Sender protocol address (IPv4) */
-	uint8_t  tha[ETH_ALEN];  /* Target hardware address (MAC) */
-	uint32_t tpa;            /* Target protocol address (IPv4) */
-} arp_hdr;
+/* Ethernet ARP packet from RFC 826 */
+typedef struct {
+	uint16_t ar_hrd;            /* Format of hardware address */
+	uint16_t ar_pro;            /* Format of protocol address */
+	uint8_t  ar_hln;            /* Length of hardware address */
+	uint8_t  ar_pln;            /* Length of protocol address */
+	uint16_t ar_op;             /* ARP opcode (command) */
+	uint8_t  ar_sha[ETH_ALEN];  /* Sender hardware address */
+	uint32_t ar_sip;            /* Sender IP address */
+	uint8_t  ar_tha[ETH_ALEN];  /* Target hardware address */
+	uint32_t ar_tip;            /* Target IP address */
+} arp_ether_ipv4;
 
 
 /*
  * Prototypes
 */
+
 int parse_input(int argc, char **argv);
-void ft_malcolm();
