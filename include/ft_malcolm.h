@@ -6,7 +6,13 @@
 */
 
 #include <stdint.h> // uint8_t, uint16_t, uint32_t
-#include <linux/if_ether.h> // ETH_ALEN
+
+/*
+ * Defines
+*/
+
+#define ETH_ALEN 6			/* Octets in one ethernet addr */
+#define ETH_P_ARP 0x0806		/* Address Resolution packet */
 
 
 /*

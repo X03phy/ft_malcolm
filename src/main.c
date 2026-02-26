@@ -3,29 +3,29 @@
 #include <sys/socket.h> // socket(), AF_INET, SOCK_RAW
 #include <arpa/inet.h> // htons()
 #include <stdio.h> // fprintf(), stderr
-#include <unistd.h> // sleep()
+#include <unistd.h> // close()
 
 
-static int g_sig = 1;
+// static int g_sig = 1;
 
 
-int ft_malcolm()
-{
-	return (0);
-}
+// int ft_malcolm()
+// {
+// 	return (0);
+// }
 
 
-static void signal_handler()
-{
-	g_sig = 0;
-}
+// static void signal_handler()
+// {
+// 	g_sig = 0;
+// }
 
 
 int main(int argc, char **argv)
 {
 	int sockfd;
-	struct 
-
+	(void)argv;
+	(void)argc;
 	// if (!parse_input(argc, argv))
 	// 	return (1);
 
@@ -37,8 +37,10 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	while (1) {
-
+		recvfrom();
 	}
+
+	close(sockfd);
 
 	return (0);
 }
